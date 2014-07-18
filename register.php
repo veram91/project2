@@ -61,6 +61,8 @@
 mysql_query("INSERT into tbl_users (f_name, l_name, username, password, blog_title) VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['username']."','".$_POST['pass']."','".$_POST['title']."')") or die(mysql_error());
 
 
+mysql_query("INSERT into tbl_blogs (title, username) VALUES('".$_POST['title']."','".$_POST['username']."')") or die(mysql_error());
+
 
 	$_POST['username'] = striplashes($_POST['username']);
 	$hour = time() + 3600;
