@@ -1,0 +1,88 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `blog_db` DEFAULT CHARACTER SET latin1 ;
+USE `blog_db` ;
+
+-- -----------------------------------------------------
+-- Table `blog_db`.`tbl_users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `blog_db`.`tbl_users` ;
+
+CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_users` (
+  `user_ID` INT NOT NULL AUTO_INCREMENT,
+  `f_name` VARCHAR(50) NOT NULL,
+  `l_name` VARCHAR(50) NOT NULL,
+  `username` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  `blog_title` VARCHAR(50) NULL DEFAULT NULL,
+  `email` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `blog_db`.`tbl_blogs`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `blog_db`.`tbl_blogs` ;
+
+CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_blogs` (
+  `blog_ID` INT NOT NULL AUTO_INCREMENT,
+  `user_ID` INT NOT NULL,
+  `pass_hash` VARCHAR(32) NOT NULL,
+  `title` VARCHAR(50) NOT NULL,
+  `username` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`blog_ID`),
+  INDEX `user_ID_idx` (`user_ID` ASC),
+  CONSTRAINT `user_ID`
+    FOREIGN KEY (`user_ID`)
+    REFERENCES `blog_db`.`tbl_users` (`user_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `blog_db`.`tbl_entries`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `blog_db`.`tbl_entries` ;
+
+CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_entries` (
+  `entry_ID` INT NOT NULL,
+  `blog_ID` INT NOT NULL,
+  `title` VARCHAR(50) NOT NULL,
+  `content` VARCHAR(50) NOT NULL,
+  `data` DATETIME NOT NULL,
+  PRIMARY KEY (`entry_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `blog_db`.`tbl_comments`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `blog_db`.`tbl_comments` ;
+
+CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_comments` (
+  `comment_ID` INT NOT NULL AUTO_INCREMENT,
+  `entry_ID` INT NOT NULL,
+  `author` VARCHAR(50) NOT NULL,
+  `content` TEXT NOT NULL,
+  `date` DATETIME NOT NULL,
+  PRIMARY KEY (`comment_ID`),
+  INDEX `entry_ID_idx` (`entry_ID` ASC),
+  CONSTRAINT `entry_ID`
+    FOREIGN KEY (`entry_ID`)
+    REFERENCES `blog_db`.`tbl_entries` (`entry_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
