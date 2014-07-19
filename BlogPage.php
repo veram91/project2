@@ -1,9 +1,9 @@
 <?php 
 
 
-if(!isset($_SESSION)){
-	session_start();
-}
+
+session_start();
+
 if(isset($_COOKIE['username'])){
 	$_SESSION['username']=$_COOKIE['username'];
 }
@@ -18,8 +18,8 @@ $footer="";
 $header="";
 $userblog="";
 
-//IF the user goes to a bookmarked page or uses a link from the login or index,
-//the link will have BlogPage?blog_ID=###
+
+
 if(!empty($_GET['blog_ID'])){ 
 	$blognum=$_GET['blog_ID'];
 	$con=mysqli_connect($db_host, $db_user, $db_pass, $db_db);
@@ -31,7 +31,7 @@ if(!empty($_GET['blog_ID'])){
 	$row=mysqli_fetch_array($result);
 	$title=$row['title'];
 	$header="<h1>$title</h1>";
-   if(empty($_SESSION['username'])){   //if person looking isnt logged in
+   if(empty($_SESSION['username'])){ //if person looking isnt logged in
 			$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
@@ -39,67 +39,88 @@ if(!empty($_GET['blog_ID'])){
 					$c=$row['title'];
 					$b=$row['content'];
 				    $a=$row['data'];
-			     	$page.="<div>
-			     			<h2>$c</h2>
-							<div>$b</div></br>
-							<div>$a</div><div> log in to view comments </div>
-							</div>";
+			     	$page.="<div class='entry'>
+						<div class='etitle'><h2>$c</h2></div>
+						<div class='etext'>$b</div></br>
+						<div class='eauthor'>$a</div><div text='ecomments'> log in to view comments </div>
+						</div>";
 				}
-				//$footer=link to log in page
-		   }else{
-			   //header back to index, they are trying to look at a blank blog
+				$footer='<!--Login Form-->
+				<form id="login_form" method="post" action="index.php">
+				<fieldset>
+				<legend>Enter your username and password</Legend>
+				<label for="username">Username</label>
+				<input type="text" name="username" size="8">
+				<label for="pass">Password</label>
+				<input type="password" name="pass" size="8">
+				<label> Stay logged in?: </label>
+				<input type="checkbox" name="persist"></input>
+				<input type="submit" value="Submit">
+				<input type = "reset" value = "Reset">	
+				</fieldset>	
+				</form> <a href="register.php"> Create New Account </a></br><?php echo $error ?>';
+
+		     }else{
+			   	header("Location: index.php");
 			 }
-    }else{ //person is logged in, check the username
+    }else{
 		$username=$_SESSION['username'];
-		$query="SELECT blog_ID FROM tbl_blogs WHERE username=$username";
+		$query="SELECT blog_ID FROM tbl_blogs WHERE username='$username'";
 		$result=mysqli_query($con,$query);
-    	        
-    	        if($result){
-    	        	$row=mysqli_fetch_array($result);
-			$userblog=$row['blog_ID'];
-    	        }
-		if($blognum===$userblog){        //if this is the users blog
-			$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
+    	if($result){
+		$row=mysqli_fetch_array($result);
+		$userblog=$row['blog_ID'];
+		}
+		if($blognum===$userblog){ //if this is the users blog
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY data ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$c=$row['title'];
 					$b=$row['content'];
 					$a=$row['data'];
-					$page.="<div>
-						<h2>$c</h2>
-						<div>$b</div></br>
-						<div>$a</div><div> comments section </div>
+					$page.="<div class='entry'>
+						<div class='etitle'><h2>$c</h2></div>
+						<div class='etext'>$b</div></br>
+						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
 						</div>";
 				}
-				$footer.='<form name="newpost" action="NewPost.php" method="post">
-					  <input type="hidden" name="blog_ID" value="$userblog"></input>
-					  <input type="submit" value="New Post"></input>
+				$footer.="<form name='newpost' action='NewPost.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$userblog'></input>
+					  <input type='submit' value='New Post'></input>
 					  </form>
-					 ';
-			}else{  
-	          $page.="There is no content on this blog"; //blank blog
-	          $footer.='<form name="newpost" action="NewPost.php" method="post">
-					  <input type="hidden" name="blog_ID" value="$userblog"></input>
-					  <input type="submit" value="New Post"></input>
+					 ";
+			}else{
+	             $page.="There is no content on this blog"; //blank blog
+				 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$userblog'></input>
+					  <input type='submit' value='New Post'></input>
 					  </form>
-					 ';
+					 ";
 			}
-		}else{       //viewing someone elses blog, don't create the New Post form in the footer
-			$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
+		}else{ //viewing someone elses blog
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY data ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$c=$row['title'];
 					$b=$row['content'];
 					$a=$row['data'];
-					$page.="<div>
-						<h2>$c</h2>
-						<div>$b</div></br>
-						<div>$a</div><div> comments section </div>
+					$page.="<div class='entry'>
+						<div class='etitle'><h2>$c</h2></div>
+						<div class='etext'>$b</div></br>
+						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
 						</div>";
 				}
-				//$footer=log out link and link to home blog
+				$username=$_SESSION['username'];
+
+				$query="SELECT blog_ID from tbl_blogs where username='$username'";
+				$result=mysqli_query($con,$query);
+				$row=mysqli_fetch_array($result);
+				$blog_ID=$row[0];
+				$footer="<h2>you logged in as ".$_SESSION['username']."
+				</br> Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+				</br> Click <a href='logout.php'> here </a> to log out</h2>";
 			}else{
 				$page.="There is no content on this blog"; //blank blog
 			}
@@ -107,8 +128,6 @@ if(!empty($_GET['blog_ID'])){
 
 				mysqli_close($con);
 	}
-	 //if the link goes straight to BlogPage.php without the ?blog_ID=###
-	 //and the user is logged in, redirect them to their page.
 }elseif(!empty($_SESSION['username'])){
 	$username=$_SESSION['username'];
 	$con=mysqli_connect($db_host, $db_user, $db_pass, $db_db);
@@ -119,9 +138,36 @@ if(!empty($_GET['blog_ID'])){
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$userblog=$row['blog_ID'];
-	$redirect="Location: BlogPage.php?blog_ID=".$userblog;
-	header($redirect);
-}else{ //not logged in, not looking at a bookmarked page, redirect to index
+	$title=$row['title'];
+	$header="<h1>$title</h1>";
+	$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
+	$result=mysqli_query($con,$query);
+	if($result){
+		while($row=mysqli_fetch_array($result)){
+					$c=$row['title'];
+					$b=$row['content'];
+				    $a=$row['data'];
+			     	$page.="<div class='entry'>
+						<div class='etitle'><h2>$c</h2></div>
+						<div class='etext'>$b</div></br>
+						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
+						</div>";
+		}
+		$footer.="<form name='newpost' action='NewPost.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$userblog'></input>
+					  <input type='submit' value='New Post'></input>
+					  </form>
+					 ";
+	}else{
+	    $page.="There is no content on this blog"; //blank blog
+		$footer.="<form name='newpost' action='NewPost.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$userblog'></input>
+					  <input type='submit' value='New Post'></input>
+					  </form>
+					 ";
+	}
+  
+}else{ //not logged in, not looking at a bookmarked page
 
 	header("Location: index.php");
 }
