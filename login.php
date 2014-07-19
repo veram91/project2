@@ -66,8 +66,7 @@ if ($get_rows >= 1) {
 	   die('username not found');
        }	   
   */  
-    ?>
-
 ?>
+
 </body>
 </html>
