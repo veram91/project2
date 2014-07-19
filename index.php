@@ -1,4 +1,5 @@
 <?php
+<?php
 include('connect.php');
 session_start();
 $content="";
@@ -36,10 +37,10 @@ if(!empty($_SESSION['username'])){
 	
 	
 	//if yes post list of blogs and a footer of "welcome" and "logout"
-	$footer="<h2>you logged in as ".$_SESSION['username']." </br> Click <a href='logout.php'> here </a> to log out</h2>";
+	$footer="<div class='loggedin'> you logged in as ".$_SESSION['username']."  Click <a href='logout.php'> here </a> to log out</div>";
 		mysql_select_db("blog_db");
 	$result = mysql_query("SELECT * FROM tbl_blogs");
-    $content.="<ol>";
+    $content.="<ul>";
     if ($result) {
         while ($row = mysql_fetch_array($result)) {
 			$blog_ID=$row['blog_ID'];
@@ -53,7 +54,7 @@ if(!empty($_SESSION['username'])){
 					   ";
         }
     }
-	$content.="</ol>";
+	$content.="</ul>";
 	
 }else{ //if no, post list of blogs and a footer of log-in
 	$footer='<!--Login Form-->
@@ -67,12 +68,13 @@ if(!empty($_SESSION['username'])){
 		<label> Stay logged in?: </label>
 		<input type="checkbox" name="persist"></input>
 		<input type="submit" value="Submit">
-		<input type = "reset" value = "Reset">	
+		<input type = "reset" value = "Reset">
+		 <a href="register.php"> Create New Account </a> </br><?php echo $error ?>
 	</fieldset>	
-	</form> <a href="register.php"> Create New Account </a> </br><?php echo $error ?>';
+	</form>';
 	mysql_select_db("blog_db");
 	$result = mysql_query("SELECT * FROM tbl_blogs");
-    $content.="<ol>";
+    $content.="<ul>";
     if ($result) {
         while ($row = mysql_fetch_array($result)) {
 			$blog_ID=$row['blog_ID'];
@@ -81,18 +83,20 @@ if(!empty($_SESSION['username'])){
 			$link="BlogPage.php?blog_ID=".$blog_ID;
 			$content.="<li><div class='bloglink'>
 						<a href='$link'>$blogtitle</a></br>
-					    by:  $blogauthor
+					    A blog by  $blogauthor
 					   </div></li>
 					   ";
         }
     }
-	$content.="</ol>";
+	$content.="</ul>";
 }
 ?>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="blog.css">
 </head>
 <body>
+<div id="header"><h1>This is a blog site </h1></div>
 <?php echo $content ?>
 <?php echo $footer ?>
 </body>
