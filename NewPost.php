@@ -34,7 +34,6 @@ if(!empty($_POST['title'])){
 	$username = mysqli_real_escape_string($con, $_SESSION['username']);
 	$entrytitle= mysqli_real_escape_string($con, $_POST['title']);
 	$entry= mysqli_real_escape_string($con, $_POST['content']);
-	echo $blog_ID." ".$username." ".$entrytitle;
 		if (mysqli_connect_errno()) {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
