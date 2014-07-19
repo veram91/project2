@@ -42,6 +42,9 @@
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
 	$blogtitle = $_Post['title'];
+	//encrypt password at entry with crypt()
+	//$password = crypt($password);
+	
 
 	$get_users = mysql_query("SELECT * FROM tlb_users where username = '$username'");
 	$get_rows = mysql_affected_rows($get_users);
@@ -60,7 +63,7 @@
 
 mysql_query("INSERT into tbl_users (f_name, l_name, username, password, blog_title) VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['username']."','".$_POST['pass']."','".$_POST['title']."')") or die(mysql_error());
 
-
+//remove this line if the create trigger works in mysql.
 mysql_query("INSERT into tbl_blogs (title, username) VALUES('".$_POST['title']."','".$_POST['username']."')") or die(mysql_error());
 
 
