@@ -4,7 +4,7 @@
 session_start();
 $db_host='localhost';
 $db_user='root';
-$db_pass='';
+$db_pass='99goner99';
 $db_db='blog_db';
 
 
@@ -42,6 +42,8 @@ if(!empty($_POST['title'])){
 	if (!mysqli_query($con,$query)) {
 		die('Error: ' . mysqli_error($con));
 	}
+	$redirect="Location: BlogPage.php?blog_ID=".$blog_ID;
+	header($redirect);
 }
 ?>
 <html>
