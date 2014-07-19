@@ -42,7 +42,7 @@ if(!empty($_GET['blog_ID'])){
 			     	$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
-						<div class='eauthor'>$a</div><div text='ecomments'> log in to view comments </div>
+						<div class='etime'>$a</div><div class='ecomments'> log in to view comments </div>
 						</div>";
 				}
 				$footer='<!--Login Form-->
@@ -56,9 +56,10 @@ if(!empty($_GET['blog_ID'])){
 				<label> Stay logged in?: </label>
 				<input type="checkbox" name="persist"></input>
 				<input type="submit" value="Submit">
-				<input type = "reset" value = "Reset">	
+				<input type = "reset" value = "Reset">
+				<a href="register.php"> Create New Account </a></br><?php echo $error ?>				
 				</fieldset>	
-				</form> <a href="register.php"> Create New Account </a></br><?php echo $error ?>';
+				</form> ';
 
 		     }else{
 			   	header("Location: index.php");
@@ -79,24 +80,32 @@ if(!empty($_GET['blog_ID'])){
 					$c=$row['title'];
 					$b=$row['content'];
 					$a=$row['data'];
+					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
-						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
+						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
+		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out";
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form>
-					 ";
+					  </form></div>
+					  ";
 			}else{
 	             $page.="There is no content on this blog"; //blank blog
-				 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
+
+		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out";
+				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form>
-					 ";
+					  </form></div>
+					  ";
 			}
 		}else{ //viewing someone elses blog
 			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY data ASC";
@@ -106,10 +115,11 @@ if(!empty($_GET['blog_ID'])){
 					$c=$row['title'];
 					$b=$row['content'];
 					$a=$row['data'];
+					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
-						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
+						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
 				$username=$_SESSION['username'];
@@ -118,11 +128,14 @@ if(!empty($_GET['blog_ID'])){
 				$result=mysqli_query($con,$query);
 				$row=mysqli_fetch_array($result);
 				$blog_ID=$row[0];
-				$footer="<h2>you logged in as ".$_SESSION['username']."
-				</br> Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
-				</br> Click <a href='logout.php'> here </a> to log out</h2>";
+				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out</div>";
 			}else{
 				$page.="There is no content on this blog"; //blank blog
+				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out</div>";
 			}
 		}
 
@@ -147,23 +160,30 @@ if(!empty($_GET['blog_ID'])){
 					$c=$row['title'];
 					$b=$row['content'];
 				    $a=$row['data'];
+					$entry_ID=$row['entry_ID'];
 			     	$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
-						<div class='eauthor'>$a</div><div text='ecomments'> comments section link here </div>
+						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 		}
+		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out";
 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form>
+					  </form></div>
 					 ";
 	}else{
 	    $page.="There is no content on this blog"; //blank blog
+		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='logout.php'> here </a> to log out";
 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form>
+					  </form></div>
 					 ";
 	}
   
@@ -175,7 +195,7 @@ if(!empty($_GET['blog_ID'])){
 ?>
 <html>
 <head>
-<!--css and java links-->
+<link rel="stylesheet" type="text/css" href="blog.css">
 </head>
 <body>
 <div>
