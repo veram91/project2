@@ -48,6 +48,24 @@ if ($get_rows >= 1) {
     } else {
         die('WRONG username/password combination');
     }
+    
+//alternate password check if the password is encrypted at registration
+/*$mysql_login_info = mysql_query("SELECT password FROM tbl_users where username='$username'");
+  
+  if($mysql_login_info){
+	if($row['password']=== crypt($pass, $row['password'])){
+	   	$_POST['username'] = striplashes($_POST['username']);
+	        $hour = time() + 3600;
+         	setcookie('id_site', $_POST['username'], $hour);
+         	setcookie('key_site', $_POST['pass'], $hour);
+                header("Location: members.php");
+	 }else{
+	   die('WRONG username/password combination');
+	 }
+      }else{
+	   die('username not found');
+       }	   
+  */  
     ?>
 
 ?>
