@@ -16,7 +16,7 @@ $db_db='blog_db';
 $page="";
 $footer="";
 $header="";
-
+$userblog="";
 
 //IF the user goes to a bookmarked page or uses a link from the login or index,
 //the link will have BlogPage?blog_ID=###
@@ -42,7 +42,7 @@ if(!empty($_GET['blog_ID'])){
 			     	$page.="<div>
 			     			<h2>$c</h2>
 							<div>$b</div></br>
-							<div>$c</div><div> log in to view comments </div>
+							<div>$a</div><div> log in to view comments </div>
 							</div>";
 				}
 				//$footer=link to log in page
@@ -53,9 +53,11 @@ if(!empty($_GET['blog_ID'])){
 		$username=$_SESSION['username'];
 		$query="SELECT blog_ID FROM tbl_blogs WHERE username=$username";
 		$result=mysqli_query($con,$query);
-    	$row=mysqli_fetch_array($result);
-		$userblog=$row['blog_ID'];
-		$blognum=$_GET['blog_ID'];
+    	        
+    	        if($result){
+    	        	$row=mysqli_fetch_array($result);
+			$userblog=$row['blog_ID'];
+    	        }
 		if($blognum===$userblog){        //if this is the users blog
 			$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
 			$result=mysqli_query($con,$query);
@@ -67,7 +69,7 @@ if(!empty($_GET['blog_ID'])){
 					$page.="<div>
 						<h2>$c</h2>
 						<div>$b</div></br>
-						<div>$c</div><div> comments section </div>
+						<div>$a</div><div> comments section </div>
 						</div>";
 				}
 				$footer.='<form name="newpost" action="NewPost.php" method="post">
@@ -94,7 +96,7 @@ if(!empty($_GET['blog_ID'])){
 					$page.="<div>
 						<h2>$c</h2>
 						<div>$b</div></br>
-						<div>$c</div><div> comments section </div>
+						<div>$a</div><div> comments section </div>
 						</div>";
 				}
 				//$footer=log out link and link to home blog
