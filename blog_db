@@ -43,11 +43,11 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `blog_db`.`tbl_entries` ;
 
 CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_entries` (
-  `entry_ID` INT NOT NULL,
+  `entry_ID` INT NOT NULL AUTO_INCREMENT,
   `blog_ID` INT NOT NULL,
   `title` VARCHAR(50) NOT NULL,
-  `content` VARCHAR(50) NOT NULL,
-  `data` DATETIME NOT NULL,
+  `content` TEXT NOT NULL,
+  `date` DATETIME NOT NULL,
   PRIMARY KEY (`entry_ID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
@@ -69,6 +69,13 @@ CREATE TABLE IF NOT EXISTS `blog_db`.`tbl_users` (
   PRIMARY KEY (`user_ID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
+
+DELIMITER //
+CREATE TRIGGER add_blog AFTER INSERT ON  blog_db.tbl_users
+FOR EACH ROW
+BEGIN
+INSERT INTO blog_db.tbl_blogs(user_ID, title, username, pass_hash) VALUES (NEW.user_ID, NEW.blog_title, NEW.username, NEW.password); END; //
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
