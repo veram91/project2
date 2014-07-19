@@ -1,0 +1,30 @@
+<!--Here is something that I made for another assignment...
+This first part takes in an option of background images (maybe you can put 
+it in the registration form...-->
+
+
+Background image: <select name="bimage" id="bimage">
+	<option value="http://s3.freefoto.com/images/05/30/05_30_37_web.jpg">Jasmine Blossom</option>
+	<option value="http://fc05.deviantart.net/fs27/f/2008/143/6/2/My_Vista_style_Background_by_XxceL.jpg">Spring Green</option>
+	<option value="http://fc01.deviantart.net/fs70/i/2012/355/c/f/christmas_background_with_clock_and_patterns_by_lyotta-d5ooquo.jpg">Timeless</option>
+	<option value="https://c1.staticflickr.com/9/8198/8236401932_72c85768fd_z.jpg">Steel</option>
+       <option value="http://fc00.deviantart.net/fs70/i/2012/018/4/9/powerpoint_background_by_ghostbustier-d4mscz8.png">Love Turquoise</option>
+</select>
+
+<!--Then in the blogpost.php you can this in the head... but since it will be fed into a database, will need to get from there.-->
+<?php
+$bselected = $_GET['bimage'];
+?>
+
+?>
+<style type="text/css">
+body{
+      text-align: center;
+	background: url(<?php echo $bselected;?>) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			margin-top: 5%;
+			
+}
