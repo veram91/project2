@@ -11,7 +11,7 @@ if(isset($_COOKIE['username'])){
 
 $db_host='localhost';
 $db_user='root';
-$db_pass='99goner99';
+$db_pass='';
 $db_db='blog_db';
 $page="";
 $footer="";
