@@ -11,7 +11,7 @@ if(isset($_COOKIE['username'])){
 
 $db_host='localhost';
 $db_user='root';
-$db_pass='';
+$db_pass='99goner99';
 $db_db='blog_db';
 $page="";
 $footer="";
@@ -134,13 +134,13 @@ if(!empty($_GET['blog_ID'])){
 	if(mysqli_connect_errno()){
 		$success="Failed to connect to database: ".mysqli_connect_error();
 	}
-	$query="SELECT blog_ID,title FROM tbl_blogs WHERE username=$username";
+	$query="SELECT blog_ID,title FROM tbl_blogs WHERE username='$username'";
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$userblog=$row['blog_ID'];
 	$title=$row['title'];
 	$header="<h1>$title</h1>";
-	$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
+	$query="SELECT * FROM tbl_entries WHERE blog_ID=$userblog ORDER BY data ASC";
 	$result=mysqli_query($con,$query);
 	if($result){
 		while($row=mysqli_fetch_array($result)){
