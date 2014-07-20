@@ -50,8 +50,10 @@
 
 		$_POST['username'] = stripslashes($_POST['username']);
 		$hour = time() + 3600;
-		setcookie('id_site', $_POST['username'], $hour);
-		setcookie('key_site', $_POST['pass'], $hour);
+		
+		if(!empty($_POST['persist'])){
+				setcookie('username', $username, $hour);
+		}
 		$_SESSION['username']=$_POST['username'];
 		//closes mysql
 		mysql_close($link);
@@ -95,6 +97,8 @@
 	<input type='password' name='pass' id='pass' maxlength="50" required/>
 	<label for='title' >Blog Title*: </label>
 	<input type='text' name='title' id='title' maxlength="50" required/>
+	<label> Stay logged in?: </label>
+	<input type="checkbox" name="persist"></input>
 	<input type='submit' name='Submit' value='Register' />
 	</fieldset>
 	</form>
