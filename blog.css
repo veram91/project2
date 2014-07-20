@@ -1,0 +1,51 @@
+
+body{
+background-image: url("http://www.dream-wallpaper.com/free-wallpaper/art-wallpaper/background-color-3-wallpaper/1920x1200/free-wallpaper-14.jpg") no-repeat center center fixed;
+width: 80%;
+margin-left: 30px;
+margin-right: 30px;
+}
+
+ol{
+width: 90%;
+//not sure where this is
+}
+li{
+//not sure where this is
+}
+h1{
+text-align: center;
+border: 1 px solid black;
+}
+
+#header{
+
+}
+
+#login_form{
+
+}
+
+.etitle{
+text-align: center;
+}
+
+e.text{
+padding: 5px;
+font-size: 14px;
+}
+
+.etime{
+width: 45%;
+}
+
+.ecomments{
+width: 45%
+}
+
+
+.center{
+    margin-left: auto;
+		margin-right: auto;
+		width: 70%;
+}
