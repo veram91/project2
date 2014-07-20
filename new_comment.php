@@ -29,7 +29,7 @@ $form = "
 
 	mysql_query("INSERT INTO tbl_comments(entry_ID, author, content, date) 
 				VALUES('$entryid', '$username', '$content', now()) ") or die (mysql_error()); 
-	$redirect = "get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid;
+	$redirect = "Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid;
 	header($redirect);
 
 
