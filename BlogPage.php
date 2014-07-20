@@ -58,7 +58,7 @@ if(!empty($_GET['blog_ID'])){
 				<input type="submit" value="Submit">
 				<input type = "reset" value = "Reset">
 				<a href="register.php"> Create New Account </a></br><?php echo $error ?>
-				<a href='index.php'>Return to Blog Index</a></br>
+				<a href="index.php">Return to Blog Index</a></br>
 				</fieldset>	
 				</form> ';
 
