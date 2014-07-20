@@ -9,25 +9,29 @@ if(isset($_COOKIE['username'])){
   $_SESSION['username']=$_COOKIE['username'];
 }
 
+
 if(!empty($_POST['username'])){
-	//test login against database
+
 	mysql_select_db("blog_db");
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
+	
 
-	$mysql_login_info = mysql_query("SELECT username, password FROM tbl_users where username='$username' and password='$password'");
-	$get_rows = mysql_affected_rows($link);
-
-	#If username/pasword is correct, it will update the session to include their username.
-	if ($get_rows >= 1) {
-		$username = stripslashes($_POST['username']);
-		$hour = time() + 3600;
-		if(!empty($_POST['persist'])){
-			setcookie('username', $username, $hour);
+	$mysql_login_info = mysql_query("SELECT password FROM tbl_users where username='$username'");
+	if($mysql_login_info){
+	    $row=mysql_fetch_array($mysql_login_info);
+		$hash=$row['password'];
+		if($hash===crypt($password, $hash)){
+			$hour = time() + 3600;
+			if(!empty($_POST['persist'])){
+				setcookie('username', $username, $hour);
+			}
+			$_SESSION['username']=$username;
+		}else{
+		  $error="wrong password";
 		}
-	    $_SESSION['username']=$_POST['username'];
 	}else{
-		$error="Invalid Login";
+	  $error="Invalid Login";	
 	}
 }
 
