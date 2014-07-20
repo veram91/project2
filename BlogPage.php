@@ -11,34 +11,46 @@ if(isset($_COOKIE['username'])){
 
 $db_host='localhost';
 $db_user='root';
-$db_pass='';
+$db_pass='99goner99';
 $db_db='blog_db';
 $page="";
 $footer="";
 $header="";
 $userblog="";
 
+function createFoot($blog_ID){
 
+	global $footer;
+	if ($blog_ID>0){
+	$string="Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog";
+	}else{
+		$string="<a href='index.php'>Return to Blog Index</a></br>";
+	}
+
+	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username'].$string.
+		"<a href='index.php'>Return to Blog Index</a></br>
+		Click <a href='logout.php'> here </a> to log out</div>";
+}
 
 if(!empty($_GET['blog_ID'])){ 
 	$blognum=$_GET['blog_ID'];
 	$con=mysqli_connect($db_host, $db_user, $db_pass, $db_db);
 	if(mysqli_connect_errno()){
-		$success="Failed to connect to database: ".mysqli_connect_error();
+		$success="Failed to connect to datebase: ".mysqli_connect_error();
 	}
 	$query="SELECT title FROM tbl_blogs WHERE blog_ID=$blognum";
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$title=$row['title'];
 	$header="<h1>$title</h1>";
-   if(empty($_SESSION['username'])){ //if person looking isnt logged in
-			$query="SELECT * FROM tbl_entries WHERE blog_ID=$blognum ORDER BY data ASC";
+    if(empty($_SESSION['username'])){ //if person looking isnt logged in
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$c=$row['title'];
 					$b=$row['content'];
-				    $a=$row['data'];
+				    $a=$row['date'];
 			     	$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
@@ -63,7 +75,8 @@ if(!empty($_GET['blog_ID'])){
 				</form> ';
 
 		     }else{
-			   	header("Location: index.php");
+			   	
+				header("Location: index.php");
 			 }
     }else{
 		$username=$_SESSION['username'];
@@ -74,13 +87,13 @@ if(!empty($_GET['blog_ID'])){
 		$userblog=$row['blog_ID'];
 		}
 		if($blognum===$userblog){ //if this is the users blog
-			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY data ASC";
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$c=$row['title'];
 					$b=$row['content'];
-					$a=$row['data'];
+					$a=$row['date'];
 					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
@@ -88,9 +101,7 @@ if(!empty($_GET['blog_ID'])){
 						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
-		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out";
+		 		createFoot(0);
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
@@ -99,10 +110,7 @@ if(!empty($_GET['blog_ID'])){
 			}else{
 	             $page.="There is no content on this blog"; //blank blog
 
-		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out";
+		 		createFoot($blognum);
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
@@ -110,13 +118,13 @@ if(!empty($_GET['blog_ID'])){
 					  ";
 			}
 		}else{ //viewing someone elses blog
-			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY data ASC";
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$c=$row['title'];
 					$b=$row['content'];
-					$a=$row['data'];
+					$a=$row['date'];
 					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
@@ -130,16 +138,10 @@ if(!empty($_GET['blog_ID'])){
 				$result=mysqli_query($con,$query);
 				$row=mysqli_fetch_array($result);
 				$blog_ID=$row[0];
-				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog 
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out</div>";
+				createFoot($blog_ID);
 			}else{
 				$page.="There is no content on this blog"; //blank blog
-				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog 
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out</div>";
+				createFoot($blog_ID);
 			}
 		}
 
@@ -149,7 +151,7 @@ if(!empty($_GET['blog_ID'])){
 	$username=$_SESSION['username'];
 	$con=mysqli_connect($db_host, $db_user, $db_pass, $db_db);
 	if(mysqli_connect_errno()){
-		$success="Failed to connect to database: ".mysqli_connect_error();
+		$success="Failed to connect to datebase: ".mysqli_connect_error();
 	}
 	$query="SELECT blog_ID,title FROM tbl_blogs WHERE username='$username'";
 	$result=mysqli_query($con,$query);
@@ -163,6 +165,7 @@ if(!empty($_GET['blog_ID'])){
 
 	header("Location: index.php");
 }
+
 ?>
 <html>
 <head>
