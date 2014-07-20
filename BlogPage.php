@@ -98,7 +98,7 @@ if(!empty($_GET['blog_ID'])){
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$c</h2></div>
 						<div class='etext'>$b</div></br>
-						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
+						<div class='etime'>$a</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
 		 		createFoot(0);
