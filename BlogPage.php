@@ -89,7 +89,6 @@ if(!empty($_GET['blog_ID'])){
 						</div>";
 				}
 		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog
 					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out";
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
