@@ -1,5 +1,4 @@
 <?php
-<?php
 include('connect.php');
 session_start();
 $content="";
@@ -10,8 +9,9 @@ if(isset($_COOKIE['username'])){
 }
 
 
+//test the password
 if(!empty($_POST['username'])){
-
+	//test login against database
 	mysql_select_db("blog_db");
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
@@ -35,30 +35,48 @@ if(!empty($_POST['username'])){
 	}
 }
 
-	
-	
-if(!empty($_SESSION['username'])){	
-	
-	
-	//if yes post list of blogs and a footer of "welcome" and "logout"
-	$footer="<div class='loggedin'> you logged in as ".$_SESSION['username']."  Click <a href='logout.php'> here </a> to log out</div>";
-		mysql_select_db("blog_db");
+//finds the date of the last blog post in the blog
+function lastPost($blog_ID){ 
+	$commentQuery="SELECT date FROM tbl_entries WHERE blog_ID='$blog_ID' ORDER BY date DESC";
+	$commentResult=mysql_query($commentQuery);
+	$row=mysql_fetch_array($commentResult);
+	$mysqldate=strtotime($row['date']);
+	$date="Last updated on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
+	if(!empty($mysqldate)){
+		return $date;
+	}else{
+		return "No posts"; 
+	}
+}
+
+//print out the list of blogs
+function printBlogs(){
+	mysql_select_db("blog_db");
 	$result = mysql_query("SELECT * FROM tbl_blogs");
-    $content.="<ul>";
-    if ($result) {
-        while ($row = mysql_fetch_array($result)) {
-			$blog_ID=$row['blog_ID'];
-			$blogtitle=$row['title'];
-			$blogauthor=$row['username'];
-			$link="BlogPage.php?blog_ID=".$blog_ID;
-			$content.="<li><div class='bloglink'>
-						<a href='$link'>$blogtitle</a></br>
-					    by:  $blogauthor
-					   </div></li>
-					   ";
+    	$content="<ul>";
+	if ($result) {
+	 while ($row = mysql_fetch_array($result)) {
+		$blog_ID=$row['blog_ID'];
+		$blogtitle=$row['title'];
+		$blogauthor=$row['username'];
+		$link="BlogPage.php?blog_ID=".$blog_ID;
+		$update=lastPost($blog_ID);
+		$content.="<li><div class='bloglink'>
+		           <a href='$link'>$blogtitle</a></br>
+			    A blog by  $blogauthor $update
+			   </div></li>";
         }
     }
 	$content.="</ul>";
+	
+	return $content;
+}
+	
+if(!empty($_SESSION['username'])){	
+	
+	//if yes post list of blogs and a footer of "welcome" and "logout"
+	$footer="<div class='loggedin'> you logged in as ".$_SESSION['username']."  Click <a href='logout.php'> here </a> to log out</div>";
+	$content=printBlogs();
 	
 }else{ //if no, post list of blogs and a footer of log-in
 	$footer='<!--Login Form-->
@@ -76,24 +94,9 @@ if(!empty($_SESSION['username'])){
 		 <a href="register.php"> Create New Account </a> </br><?php echo $error ?>
 	</fieldset>	
 	</form>';
-	mysql_select_db("blog_db");
-	$result = mysql_query("SELECT * FROM tbl_blogs");
-    $content.="<ul>";
-    if ($result) {
-        while ($row = mysql_fetch_array($result)) {
-			$blog_ID=$row['blog_ID'];
-			$blogtitle=$row['title'];
-			$blogauthor=$row['username'];
-			$link="BlogPage.php?blog_ID=".$blog_ID;
-			$content.="<li><div class='bloglink'>
-						<a href='$link'>$blogtitle</a></br>
-					    A blog by  $blogauthor
-					   </div></li>
-					   ";
-        }
-    }
-	$content.="</ul>";
+	$content=printBlogs();
 }
+
 ?>
 <html>
 <head>
