@@ -35,7 +35,7 @@ $page = "";
 	$blognum=$_GET['blog_ID'];
 	$query="SELECT title FROM tbl_blogs WHERE blog_ID=$blognum";
 	$result=mysql_query($query);
-	$row=mysqli_fetch_array($result);
+	$row=mysql_fetch_array($result);
 	$title=$row['title'];
 	$header="<h1>$title</h1>";
 	
