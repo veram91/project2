@@ -33,20 +33,20 @@ function createFoot($blog_ID){
 }
 
 function countComments($entry_ID, $con){
-	$commentQuery="SELECT COUNT(*) AS total FROM tbl_comments WHERE entry_ID='$entry_ID'";
-	$commentResult=mysqli_query($con,$commentQuery);
-	$total=mysqli_fetch_assoc($commentResult);
-	$numCom=$total['total'];
-	if(!empty($total['total'])){
-	    if($numCom==1){
-		$commentString="View $numCom comment";
-	    }else{
-		$commentString="View $numCom comments";
-	    }
-	}else{
-	   $commentString="Click to add a comment";
-	}
-	return $commentString;
+					$commentQuery="SELECT COUNT(*) AS total FROM tbl_comments WHERE entry_ID='$entry_ID'";
+					$commentResult=mysqli_query($con,$commentQuery);
+					$total=mysqli_fetch_assoc($commentResult);
+					$numCom=$total['total'];
+					if(!empty($total['total'])){
+					    if($numCom==1){
+							$commentString="View $numCom comment";
+						}else{
+							$commentString="View $numCom comments";
+						}
+					}else{
+						   $commentString="Click to add a comment";
+					}
+					return $commentString;
 }
 
 
@@ -207,3 +207,5 @@ if(!empty($_GET['blog_ID'])){
 </div>
 </body>
 </html>
+
+
