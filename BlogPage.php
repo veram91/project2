@@ -51,6 +51,7 @@ if(!empty($_GET['blog_ID'])){
 					$title=$row['title'];
 					$content=$row['content'];
 					$date=$row['date'];
+					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
@@ -94,6 +95,7 @@ if(!empty($_GET['blog_ID'])){
 					$title=$row['title'];
 					$content=$row['content'];
 					$date=$row['date'];
+					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
