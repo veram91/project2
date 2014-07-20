@@ -68,8 +68,8 @@ $page = "";
 			$date = $row['date'];
 			$page.="<div class = 'display_comments'>
 					<div class = 'comment_author'><h2>".$author." said...</h2></div>
-					<div class = 'comment_content'>".$content." said...</div>
-					<div class = 'comment_time'>".$date." said...</div>
+					<div class = 'comment_content'>".$content."</div>
+					<div class = 'comment_time'>".$date."</div>
 					</div>";
 		
 		}
