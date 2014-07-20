@@ -155,47 +155,14 @@ if(!empty($_GET['blog_ID'])){
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$userblog=$row['blog_ID'];
-	$title=$row['title'];
-	$header="<h1>$title</h1>";
-	$query="SELECT * FROM tbl_entries WHERE blog_ID=$userblog ORDER BY data ASC";
-	$result=mysqli_query($con,$query);
-	if($result){
-		while($row=mysqli_fetch_array($result)){
-					$c=$row['title'];
-					$b=$row['content'];
-				    $a=$row['data'];
-					$entry_ID=$row['entry_ID'];
-			     	$page.="<div class='entry'>
-						<div class='etitle'><h2>$c</h2></div>
-						<div class='etext'>$b</div></br>
-						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
-						</div>";
-		}
-		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out";
-		$footer.="<form name='newpost' action='NewPost.php' method='post'>
-					  <input type='hidden' name='blog_ID' value='$userblog'></input>
-					  <input type='submit' value='New Post'></input>
-					  </form></div>
-					 ";
-	}else{
-	    $page.="There is no content on this blog"; //blank blog
-		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					<a href='index.php'>Return to Blog Index</a></br>
-					Click <a href='logout.php'> here </a> to log out";
-		$footer.="<form name='newpost' action='NewPost.php' method='post'>
-					  <input type='hidden' name='blog_ID' value='$userblog'></input>
-					  <input type='submit' value='New Post'></input>
-					  </form></div>
-					 ";
-	}
+	$redirect="Location: BlogPage.php?blog_ID=$userblog";
+	header($redirect);
+	
   
 }else{ //not logged in, not looking at a bookmarked page
 
 	header("Location: index.php");
 }
-
 ?>
 <html>
 <head>
