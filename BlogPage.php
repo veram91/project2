@@ -50,7 +50,8 @@ if(!empty($_GET['blog_ID'])){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
 					$content=$row['content'];
-					$date=$row['date'];
+					$mysqldate=strtotime($row['date']);
+					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
@@ -94,7 +95,8 @@ if(!empty($_GET['blog_ID'])){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
 					$content=$row['content'];
-					$date=$row['date'];
+					$mysqldate=strtotime($row['date']);
+					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
@@ -125,7 +127,8 @@ if(!empty($_GET['blog_ID'])){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
 					$content=$row['content'];
-					$date=$row['date'];
+					$mysqldate=strtotime($row['date']);
+					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
