@@ -70,6 +70,13 @@ $page = "";
 					<div class = 'comment_author'><h2>".$author." said...</h2></div>
 					<div class = 'comment_content'>".$content."</div>
 					<div class = 'comment_time'>".$date."</div>
+					<form name='delcomment' action='del_comment.php' method='post'>
+						  <input type='hidden' name='entry_ID' value='$entryid'></input>
+						  <input type='hidden' name='c_author' value='$author'></input>
+						  <input type='hidden' name='c_content' value='$content'></input>
+						  <input type='hidden' name='c_date' value='$date'></input>
+						  <input type='submit' value='Delete Comment'></input>
+						  </form></div>	
 					</div>";
 		
 		}
@@ -85,6 +92,7 @@ $page = "";
 		Click <a href='logout.php'> here </a> to log out";
 	$footer.="<form name='newcomment' action='new_comment.php' method='post'>
 		  <input type='hidden' name='entry_ID' value='$entryid'></input>
+		  <input type='hidden' name='blog_ID' value='$blognum'></input>
 		  <input type='submit' value='Post Comment'></input>
 		  </form></div>
 		  ";
