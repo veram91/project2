@@ -48,13 +48,13 @@ if(!empty($_GET['blog_ID'])){
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
-					$c=$row['title'];
-					$b=$row['content'];
-				    $a=$row['date'];
-			     	$page.="<div class='entry'>
-						<div class='etitle'><h2>$c</h2></div>
-						<div class='etext'>$b</div></br>
-						<div class='etime'>$a</div><div class='ecomments'> log in to view comments </div>
+					$title=$row['title'];
+					$content=$row['content'];
+					$date=$row['date'];
+					$page.="<div class='entry'>
+						<div class='etitle'><h2>$title</h2></div>
+						<div class='etext'>$content</div></br>
+						<div class='etime'>$date</div><div class='ecomments'> log in to view comments </div>
 						</div>";
 				}
 				$footer='<!--Login Form-->
@@ -91,14 +91,13 @@ if(!empty($_GET['blog_ID'])){
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
-					$c=$row['title'];
-					$b=$row['content'];
-					$a=$row['date'];
-					$entry_ID=$row['entry_ID'];
+					$title=$row['title'];
+					$content=$row['content'];
+					$date=$row['date'];
 					$page.="<div class='entry'>
-						<div class='etitle'><h2>$c</h2></div>
-						<div class='etext'>$b</div></br>
-						<div class='etime'>$a</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
+						<div class='etitle'><h2>$title</h2></div>
+						<div class='etext'>$content</div></br>
+						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
 		 		createFoot(0);
@@ -122,14 +121,13 @@ if(!empty($_GET['blog_ID'])){
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
-					$c=$row['title'];
-					$b=$row['content'];
-					$a=$row['date'];
-					$entry_ID=$row['entry_ID'];
+					$title=$row['title'];
+					$content=$row['content'];
+					$date=$row['date'];
 					$page.="<div class='entry'>
-						<div class='etitle'><h2>$c</h2></div>
-						<div class='etext'>$b</div></br>
-						<div class='etime'>$a</div><div class='ecomments'><a href='comments.php?entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
+						<div class='etitle'><h2>$title</h2></div>
+						<div class='etext'>$content</div></br>
+						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
 						</div>";
 				}
 				$username=$_SESSION['username'];
