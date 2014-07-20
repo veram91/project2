@@ -11,7 +11,7 @@ if(isset($_COOKIE['username'])){
 
 $db_host='localhost';
 $db_user='root';
-$db_pass='99goner99';
+$db_pass='';
 $db_db='blog_db';
 $page="";
 $footer="";
@@ -57,7 +57,8 @@ if(!empty($_GET['blog_ID'])){
 				<input type="checkbox" name="persist"></input>
 				<input type="submit" value="Submit">
 				<input type = "reset" value = "Reset">
-				<a href="register.php"> Create New Account </a></br><?php echo $error ?>				
+				<a href="register.php"> Create New Account </a></br><?php echo $error ?>
+				<a href='index.php'>Return to Blog Index</a></br>
 				</fieldset>	
 				</form> ';
 
@@ -89,6 +90,7 @@ if(!empty($_GET['blog_ID'])){
 				}
 		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
 					Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out";
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
@@ -100,6 +102,7 @@ if(!empty($_GET['blog_ID'])){
 
 		 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
 					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out";
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
@@ -129,12 +132,14 @@ if(!empty($_GET['blog_ID'])){
 				$row=mysqli_fetch_array($result);
 				$blog_ID=$row[0];
 				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog 
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out</div>";
 			}else{
 				$page.="There is no content on this blog"; //blank blog
 				$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog 
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out</div>";
 			}
 		}
@@ -168,7 +173,7 @@ if(!empty($_GET['blog_ID'])){
 						</div>";
 		}
 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out";
 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
@@ -178,7 +183,7 @@ if(!empty($_GET['blog_ID'])){
 	}else{
 	    $page.="There is no content on this blog"; //blank blog
 		$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
-					Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog
+					<a href='index.php'>Return to Blog Index</a></br>
 					Click <a href='logout.php'> here </a> to log out";
 		$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
