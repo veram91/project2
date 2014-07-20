@@ -32,6 +32,27 @@ function createFoot($blog_ID){
 		Click <a href='logout.php'> here </a> to log out</div>";
 }
 
+function countComments($entry_ID, $con){
+	$commentQuery="SELECT COUNT(*) AS total FROM tbl_comments WHERE entry_ID='$entry_ID'";
+	$commentResult=mysqli_query($con,$commentQuery);
+	$total=mysqli_fetch_assoc($commentResult);
+	$numCom=$total['total'];
+	if(!empty($total['total'])){
+	    if($numCom==1){
+		$commentString="View $numCom comment";
+	    }else{
+		$commentString="View $numCom comments";
+	    }
+	}else{
+	   $commentString="Click to add a comment";
+	}
+	return $commentString;
+}
+
+
+
+
+
 if(!empty($_GET['blog_ID'])){ 
 	$blognum=$_GET['blog_ID'];
 	$con=mysqli_connect($db_host, $db_user, $db_pass, $db_db);
@@ -52,7 +73,6 @@ if(!empty($_GET['blog_ID'])){
 					$content=$row['content'];
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
-					$entry_ID=$row['entry_ID'];
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
@@ -77,7 +97,7 @@ if(!empty($_GET['blog_ID'])){
 				</form> ';
 
 		     }else{
-			   	
+
 				header("Location: index.php");
 			 }
     }else{
@@ -98,10 +118,11 @@ if(!empty($_GET['blog_ID'])){
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$entry_ID=$row['entry_ID'];
+					$commentString=countComments($entry_ID, $con);
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
-						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
+						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>$commentString</a> </div>
 						</div>";
 				}
 		 		createFoot(0);
@@ -129,10 +150,14 @@ if(!empty($_GET['blog_ID'])){
 					$content=$row['content'];
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
+					$entry_ID=$row['entry_ID'];
+					
+					$commentString=countComments($entry_ID, $con);
+					
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
-						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>Click here to view comments</a> </div>
+						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>$commentString</a> </div>
 						</div>";
 				}
 				$username=$_SESSION['username'];
@@ -162,7 +187,7 @@ if(!empty($_GET['blog_ID'])){
 	$userblog=$row['blog_ID'];
 	$redirect="Location: BlogPage.php?blog_ID=$userblog";
 	header($redirect);
-	
+
   
 }else{ //not logged in, not looking at a bookmarked page
 
