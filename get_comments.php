@@ -60,15 +60,16 @@ $page = "";
 
 	$get_comments = "SELECT * FROM tbl_comments WHERE entry_ID = '$entryid'";
 	$result = mysql_query($get_comments);
-	if($result){
+	$get_rows = mysql_affected_rows($link);
+	if($get_rows > 0){
 		while($row = mysql_fetch_array($result)){
 			$author = $row['author'];
 			$content = $row['content'];
 			$date = $row['date'];
 			$page.="<div class = 'display_comments'>
 					<div class = 'comment_author'><h2>".$author." said...</h2></div>
-					<div class = 'comment_content'>".$content."</div>
-					<div class = 'comment_time'>".$date."</div>
+					<div class = 'comment_content'>".$content." said...</div>
+					<div class = 'comment_time'>".$date." said...</div>
 					</div>";
 		
 		}
