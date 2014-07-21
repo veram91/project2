@@ -27,7 +27,7 @@ function createFoot($blog_ID){
 		$string="<a href='index.php'>Return to Blog Index</a></br>";
 	}
 
-	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username'].$string.
+	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].$string.
 		"<a href='index.php'>Return to Blog Index</a></br>
 		Click <a href='logout.php'> here </a> to log out</div>";
 }
@@ -59,11 +59,19 @@ if(!empty($_GET['blog_ID'])){
 	if(mysqli_connect_errno()){
 		$success="Failed to connect to datebase: ".mysqli_connect_error();
 	}
-	$query="SELECT title FROM tbl_blogs WHERE blog_ID=$blognum";
+	$query="SELECT title,username FROM tbl_blogs WHERE blog_ID=$blognum";
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$title=$row['title'];
-	$header="<h1>$title</h1>";
+        $username = $row['username'];
+	
+	$query = "SELECT f_name, l_name FROM tbl_users WHERE username = '$username'";
+	$result = mysqli_query($con,$query);
+	$row=mysqli_fetch_array($result);
+	$firstname = $row['f_name'];
+	$lastname = $row['l_name'];
+	
+	$header="<h1 class='logoh1'>$title</h1><h4 class='logoh4'>A BlogNow by: $firstname $lastname</h4><hr>";
     if(empty($_SESSION['username'])){ //if person looking isnt logged in
 			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
 			$result=mysqli_query($con,$query);
