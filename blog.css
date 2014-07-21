@@ -4,14 +4,28 @@ background-image: url("http://www.dream-wallpaper.com/free-wallpaper/art-wallpap
 width: 80%;
 margin-left: 30px;
 margin-right: 30px;
+margin-top:7%;
+}
+
+.logoh1{
+text-indent:38%;	
+}
+
+.logoh4{
+text-indent:50%;
+font-style:italic;
+}
+
+.formcontent{
+padding:1%;
 }
 
 ol{
 width: 90%;
-//not sure where this is
+
 }
 li{
-//not sure where this is
+
 }
 h1{
 text-align: center;
