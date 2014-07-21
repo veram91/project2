@@ -85,6 +85,7 @@ $page = "";
 						<div class = 'comment_content'>".$content."</div>
 						<div class = 'comment_time'>".$date."</div>
 						<form name='delcomment' action='del_comment.php' method='post'>
+							 <input type = 'hidden' name = 'blog_ID' value='$blognum'></input>
 							  <input type='hidden' name='entry_ID' value='$entryid'></input>
 							  <input type='hidden' name='c_author' value='$author'></input>
 							  <input type='hidden' name='c_content' value='$content'></input>
