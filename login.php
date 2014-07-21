@@ -7,20 +7,24 @@
 	<title>untitled</title>
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Vera">
+	<link rel="stylesheet" type="text/css" href="blog.css">
 	<!-- Date: 2014-07-18 -->
 </head>
 <body>
 	<!--Login Form-->
-	<h2>Login Form</h2>
+	<h1 class="logoh1">BlogNow...</h1>
+	<h4 class="logoh4">Who will YOU influence today? Today's IDEAS are tomorrow's REALITY</h4>
 	<form id="login_form" method="post" action="login.php">
 	<fieldset>
-		<legend>Enter your username and password</Legend>
+		<legend><h3>Login Form: Enter your username and password</Legend>
+		<div class="formcontent"
 		<label for="username">Username</label>
 		<input type="text" name="username" size="8">
 		<label for="pass">Password</label>
 		<input type="password" name="pass" size="8">
 		<input type="submit" value="Submit">
-		<input type = "reset" value = "Reset">	
+		<input type = "reset" value = "Reset">
+		</div>
 	</fieldset>	
 	</form>	
 	
