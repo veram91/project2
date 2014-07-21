@@ -45,6 +45,7 @@ if(!empty($_POST['title'])&&!empty($_POST['content'])){
 	if(empty($_POST['rewrite'])){ //code to show a preview of the post
 	$title=$_POST['title'];
 	$content=$_POST['content'];
+	$content=nl2br($content);
 
 	$preview="<div class='entry'>
 		<div class='etitle'><h2>$title</h2></div>
