@@ -20,7 +20,7 @@ $query = "DELETE FROM tbl_comments WHERE entry_ID = '$entry_ID'
 									AND date = '$date'";
 									
 mysql_query($query);
-header("Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid);
+header("Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID);
 
 
 
