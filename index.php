@@ -110,7 +110,7 @@ if(!empty($_SESSION['username'])){
 <h1 class="logoh1">BlogNow...</h1><h4 class="logoh4">Who will YOU influence today? Today's IDEAS are tomorrow's REALITY.</h4>
 </div>
 <?php echo $content ?>
-<div id="footer">
+<div class="footer">
 <?php echo $footer ?>
 </div>
 </body>
