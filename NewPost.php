@@ -97,12 +97,15 @@ if(!empty($_POST['title'])&&!empty($_POST['content'])){
 
 <html>
 <head>
-<!--css and java links-->
+<link rel="stylesheet" type="text/css" href="blog.css"></link>
 </head>
 <body>
 <div>
+<div id="content">
 <?php echo $preview ?>
+<div id="formarea">
 <?php echo $form ?>
+</div>
 </div>
 </body>
 </html>
