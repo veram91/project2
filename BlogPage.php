@@ -82,7 +82,7 @@ if(!empty($_GET['blog_ID'])){
 				$footer='<!--Login Form-->
 				<form id="login_form" method="post" action="index.php">
 				<fieldset>
-				<legend>Enter your username and password</Legend>
+				<legend><h3>Enter your username and password</h3></Legend>
 				<label for="username">Username</label>
 				<input type="text" name="username" size="8">
 				<label for="pass">Password</label>
