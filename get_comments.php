@@ -131,8 +131,8 @@ $page = "";
 	
 	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
-		Click <a href='logout.php'> here </a> to log out<br/>
-		<a href='index.php'> Home </a>";
+		<a href='index.php'> Return to Blog Index</a><br/>
+		<a href='logout.php'> Logout</a>";
 		
 
 	
@@ -142,7 +142,7 @@ $page = "";
 <head>
 	<link rel = "stylesheet" type="text/css" href="blog.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>untitled</title>
+	<title>Home</title>
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Vera">
 	<!-- Date: 2014-07-20 -->
