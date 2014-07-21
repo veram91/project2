@@ -81,13 +81,12 @@
 	<!--Registration Form-->
 	<h1>BlogNow...</h1>
 	<h4>Who will YOU influence today? Today's IDEAS are tomorrow's REALITY</h4>
-	<h2>Registration Form</h2>
 	<?php echo $errorname ?>
 	<?php echo $errortitle ?>
 	<form id='register' action='register.php' method='post'
 	    accept-charset='UTF-8' onsubmit="return validateFormr()">
 	<fieldset >
-	<legend>Register</legend>
+	<legend><h3>Registration Form</h3></legend>
 	<div class="content">
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	<label for='fname' >First Name*: </label>
