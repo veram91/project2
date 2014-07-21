@@ -63,6 +63,9 @@ $page = "";
 	$row=mysql_fetch_array($result);
 	$userblog=$row['blog_ID'];
 	}
+	
+	
+	
 
 
 
@@ -75,8 +78,8 @@ $page = "";
 			$content = $row['content'];
 			$date = $row['date'];
 			
-			//if the author of the blog is viewing the comments, show delete button
-			if($blognum===$userblog){
+			//if the author of the blog is viewing the comments, show delete button. Also show delete button for the comments left by logged in user
+			if($blognum===$userblog || $author ===$username){
 				$page.="<div class = 'display_comments'>
 						<div class = 'comment_author'><h2>".$author." said...</h2></div>
 						<div class = 'comment_content'>".$content."</div>
