@@ -80,7 +80,7 @@
 
 	<!--Registration Form-->
 	<h1 class="logoh1">BlogNow...</h1>
-	<h4 class="logoh4">Who will YOU influence today? Today's IDEAS are tomorrow's REALITY</h4>
+	<h4 class="logoh4">Who will YOU influence today? Make a difference NOW</h4>
 	<?php echo $errorname ?>
 	<?php echo $errortitle ?>
 	<form id='register' action='register.php' method='post'
