@@ -63,6 +63,7 @@ if(!empty($_POST['title'])&&!empty($_POST['content'])){
 	}else{ //code to edit the post after preview
 	$title=$_POST['title'];
 	$content=$_POST['content'];
+	$content=str_replace("<br />", "", $content);
 	$form="
 	<form name='newpost' action='NewPost.php' method='post'>
 	<label>Post Title:</label></br>
