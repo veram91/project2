@@ -19,6 +19,7 @@ $form = "
 <form name = 'add_comment' action = 'new_comment.php' method='post'>
 <label for='comment'>Enter your comment:</label><br/>
 <textarea rows = '7' cols = '50' name = 'comment' required></textarea><br/>
+<input type = 'hidden' name = 'blog_ID' value='$blognum'></input>
 <input type = 'hidden' name = 'entry_ID' value='$entryid'></input>
 <input type = 'submit' name = 'submit' value = 'Post New Comment'>
 <input type = 'reset' name = 'reset' value='Clear'>
