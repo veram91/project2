@@ -25,18 +25,3 @@ header("Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid);
 
 
 ?>
-
-
-
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>untitled</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Vera">
-	<!-- Date: 2014-07-20 -->
-</head>
-<body>
-
-</body>
-</html>
