@@ -82,7 +82,8 @@ if(!empty($_SESSION['username'])){
 	$footer='<!--Login Form-->
 	<form id="login_form" method="post" action="index.php">
 	<fieldset>
-		<legend>Enter your username and password</Legend>
+		<legend><h3>Enter your username and password</h3></Legend>
+		<div class="formcontent">
 		<label for="username">Username</label>
 		<input type="text" name="username" size="8">
 		<label for="pass">Password</label>
@@ -92,6 +93,7 @@ if(!empty($_SESSION['username'])){
 		<input type="submit" value="Submit">
 		<input type = "reset" value = "Reset">
 		 <a href="register.php"> Create New Account </a> </br><?php echo $error ?>
+		 </div>
 	</fieldset>	
 	</form>';
 	$content=printBlogs();
@@ -103,7 +105,7 @@ if(!empty($_SESSION['username'])){
 <link rel="stylesheet" type="text/css" href="blog.css">
 </head>
 <body>
-<div id="header"><h1>This is a blog site </h1></div>
+<div id="header"><h1 class="logoh1">BlogNow...</h1><h4 class="logoh4">Who will YOU influence today? Today's IDEAS are tomorrow's REALITY.</h4></div>
 <?php echo $content ?>
 <?php echo $footer ?>
 </body>
