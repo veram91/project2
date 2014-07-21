@@ -1,5 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 
 session_start();
@@ -66,9 +64,6 @@ $page = "";
 	
 	
 	
-
-
-
 	$get_comments = "SELECT * FROM tbl_comments WHERE entry_ID = '$entryid'";
 	$result = mysql_query($get_comments);
 	$get_rows = mysql_affected_rows($link);
@@ -93,6 +88,13 @@ $page = "";
 							  <input type='submit' value='Delete Comment'></input>
 							  </form>
 						</div>";
+				$page.=	"<form name='newcomment' action='new_comment.php' method='post'>
+								  <input type='hidden' name='blog_ID' value='$blognum'></input>
+								  <input type='hidden' name='entry_ID' value='$entryid'></input>
+								  <input type='hidden' name='blog_ID' value='$blognum'></input>
+								  <input type='submit' value='Post Comment'></input>
+								  </form></div>
+								  ";
 			}
 			else{
 					$page.="<div class = 'display_comments'>
@@ -100,6 +102,13 @@ $page = "";
 							<div class = 'comment_content'>".$content."</div>
 							<div class = 'comment_time'>".$date."</div>
 							</div>";
+					$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
+								  <input type='hidden' name='blog_ID' value='$blognum'></input>
+								  <input type='hidden' name='entry_ID' value='$entryid'></input>
+								  <input type='hidden' name='blog_ID' value='$blognum'></input>
+								  <input type='submit' value='Post Comment'></input>
+								  </form></div>
+								  ";
 				
 			}
 			
@@ -111,23 +120,27 @@ $page = "";
 
 	else{
 		$page.= "There are no comments on this entry";
+		$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$blognum'></input>
+					  <input type='hidden' name='entry_ID' value='$entryid'></input>
+					  <input type='hidden' name='blog_ID' value='$blognum'></input>
+					  <input type='submit' value='Post Comment'></input>
+					  </form></div>
+					  ";
 	}
 	
-	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']."
+	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
-		Click <a href='logout.php'> here </a> to log out";
-	$footer.="<form name='newcomment' action='new_comment.php' method='post'>
-		  <input type='hidden' name='blog_ID' value='$blognum'></input>
-		  <input type='hidden' name='entry_ID' value='$entryid'></input>
-		  <input type='hidden' name='blog_ID' value='$blognum'></input>
-		  <input type='submit' value='Post Comment'></input>
-		  </form></div>
-		  ";
+		Click <a href='logout.php'> here </a> to log out<br/>
+		<a href='logout.php'> Home </a>";
+		
+
 	
 
 ?>
 <html lang="en">
 <head>
+	<link rel = "stylesheet" type="text/css" href="blog.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>untitled</title>
 	<meta name="generator" content="TextMate http://macromates.com/">
@@ -138,6 +151,8 @@ $page = "";
 <div>
 <?php echo $header; ?>
 <?php echo $page; ?>	
+</div>
+<div class="footer">
 <?php echo $footer; ?>
 </div>	
 </body>
