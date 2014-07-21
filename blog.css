@@ -2,16 +2,18 @@ body{
 ackground: url("gray-background.jpg") no-repeat center center fixed;
 margin: 7% 20%;
 color:#151B54;
-font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+
 }
 
 .logoh1{
-text-align:center;	
+text-align:center;
+font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 }
 
 .logoh4{
 text-align:center;
 font-style:italic;
+font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 }
 
 .formcontent{
