@@ -107,7 +107,7 @@ if(!empty($_SESSION['username'])){
 </head>
 <body>
 <div id="header">
-<h1 class="logoh1">BlogNow...</h1><h4 class="logoh4">Who will YOU influence today? Today's IDEAS are tomorrow's REALITY.</h4>
+<h1 class="logoh1">BlogNow...</h1><h4 class="logoh4">Who will YOU influence today? Make a difference NOW.</h4>
 </div>
 <?php echo $content ?>
 <div class="footer">
