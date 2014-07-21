@@ -4,44 +4,46 @@ margin: 7% 20%;
 }
 
 .logoh1{
-text-indent:38%;	
+text-align:center;	
 }
 
 .logoh4{
-text-indent:50%;
+text-align:center;
 font-style:italic;
 }
 
 .formcontent{
 padding:1%;
 }
+
 a.bloglink{
 font-style: italic;
 font-weight: bold;
 font-size: 22px;
 }
+
 .owner{
 font-weight: bold;
 font-size: 18px;
 }
+
 .footer{
 position:absolute;
 bottom:5px;
-
 }
+
 .space{
 margin-left:2em;
 float:left;
-
 }
 
 ol{
 width: 90%;
-
 }
+
 li{
-
 }
+
 h1{
 text-align: center;
 border: 1 px solid black;
