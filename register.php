@@ -73,7 +73,7 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Vera">
 	<!-- Date: 2014-07-18 -->
-
+        <link rel="stylesheet" type="text/css" href=blog.css></link>
 
 </head>
 <body>
