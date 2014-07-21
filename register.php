@@ -69,7 +69,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>untitled</title>
+	<title>Registration Form</title>
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Vera">
 	<!-- Date: 2014-07-18 -->
@@ -79,6 +79,8 @@
 <body>
 
 	<!--Registration Form-->
+	<h1>BlogNow...</h1>
+	<h4>Who will YOU influence today? Today's IDEAS are tomorrow's REALITY</h4>
 	<h2>Registration Form</h2>
 	<?php echo $errorname ?>
 	<?php echo $errortitle ?>
@@ -86,6 +88,7 @@
 	    accept-charset='UTF-8' onsubmit="return validateFormr()">
 	<fieldset >
 	<legend>Register</legend>
+	<div class="content">
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	<label for='fname' >First Name*: </label>
 	<input type='text' name='fname' id='fname' maxlength="50" />
@@ -96,10 +99,11 @@
 	<label for='pass' >Password*: </label>
 	<input type='password' name='pass' id='pass' maxlength="50" required/>
 	<label for='title' >Blog Title*: </label>
-	<input type='text' name='title' id='title' maxlength="50" required/>
+	<input type='text' name='title' id='title' maxlength="50" required/><br><br>
 	<label> Stay logged in?: </label>
 	<input type="checkbox" name="persist"></input>
 	<input type='submit' name='Submit' value='Register' />
+	</div>
 	</fieldset>
 	</form>
 	<a href="index.php"> Return to Index </a>
