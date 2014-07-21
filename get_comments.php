@@ -132,7 +132,7 @@ $page = "";
 	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
 		Click <a href='logout.php'> here </a> to log out<br/>
-		<a href='logout.php'> Home </a>";
+		<a href='index.php'> Home </a>";
 		
 
 	
