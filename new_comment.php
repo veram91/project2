@@ -24,6 +24,7 @@ $form = "
 <input type = 'reset' name = 'reset' value='Clear'>
 </form>";
 
+if(!empty($_POST['submit'])){
 	$username = $_SESSION['username'];
 	$content = $_POST['comment'];
 
@@ -31,7 +32,7 @@ $form = "
 				VALUES('$entryid', '$username', '$content', now()) ") or die (mysql_error()); 
 	$redirect = "Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid;
 	header($redirect);
-
+}
 
 
 ?>
