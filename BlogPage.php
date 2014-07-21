@@ -123,6 +123,12 @@ if(!empty($_GET['blog_ID'])){
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
 						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>$commentString</a> </div>
+						<div class='deletebutton'>
+						<form name='deletepost' action='DeletePost.php' method='post'>
+						<input type='hidden' name ='blog_ID' value='$blognum'></input>
+						<input type='hidden' name ='entry_ID' value='$entry_ID'></input>
+						<input type='submit' name='submit' value='Delete Post'></input>
+						</form>
 						</div>";
 				}
 		 		createFoot(0);
