@@ -54,7 +54,15 @@ $page = "";
 				<h1>Comments</h1>";
 	
 	}
-
+	
+	
+	$username=$_SESSION['username'];
+	$query="SELECT blog_ID FROM tbl_blogs WHERE username='$username'";
+	$result=mysql_query($query);
+   	if($result){
+	$row=mysql_fetch_array($result);
+	$userblog=$row['blog_ID'];
+	}
 
 
 
@@ -66,18 +74,32 @@ $page = "";
 			$author = $row['author'];
 			$content = $row['content'];
 			$date = $row['date'];
-			$page.="<div class = 'display_comments'>
-					<div class = 'comment_author'><h2>".$author." said...</h2></div>
-					<div class = 'comment_content'>".$content."</div>
-					<div class = 'comment_time'>".$date."</div>
-					<form name='delcomment' action='del_comment.php' method='post'>
-						  <input type='hidden' name='entry_ID' value='$entryid'></input>
-						  <input type='hidden' name='c_author' value='$author'></input>
-						  <input type='hidden' name='c_content' value='$content'></input>
-						  <input type='hidden' name='c_date' value='$date'></input>
-						  <input type='submit' value='Delete Comment'></input>
-						  </form></div>	
-					</div>";
+			
+			//if the author of the blog is viewing the comments, show delete button
+			if($blognum===$userblog){
+				$page.="<div class = 'display_comments'>
+						<div class = 'comment_author'><h2>".$author." said...</h2></div>
+						<div class = 'comment_content'>".$content."</div>
+						<div class = 'comment_time'>".$date."</div>
+						<form name='delcomment' action='del_comment.php' method='post'>
+							  <input type='hidden' name='entry_ID' value='$entryid'></input>
+							  <input type='hidden' name='c_author' value='$author'></input>
+							  <input type='hidden' name='c_content' value='$content'></input>
+							  <input type='hidden' name='c_date' value='$date'></input>
+							  <input type='submit' value='Delete Comment'></input>
+							  </form>
+						</div>";
+			}
+			else{
+					$page.="<div class = 'display_comments'>
+							<div class = 'comment_author'><h2>".$author." said...</h2></div>
+							<div class = 'comment_content'>".$content."</div>
+							<div class = 'comment_time'>".$date."</div>
+							</div>";
+				
+			}
+			
+			
 		
 		}
 		
@@ -91,6 +113,7 @@ $page = "";
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
 		Click <a href='logout.php'> here </a> to log out";
 	$footer.="<form name='newcomment' action='new_comment.php' method='post'>
+		  <input type='hidden' name='blog_ID' value='$blognum'></input>
 		  <input type='hidden' name='entry_ID' value='$entryid'></input>
 		  <input type='hidden' name='blog_ID' value='$blognum'></input>
 		  <input type='submit' value='Post Comment'></input>
