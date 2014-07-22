@@ -10,14 +10,10 @@ include('connect.php');
 mysql_select_db('blog_db');
 $blognum = $_POST['blog_ID'];
 $entry_ID = $_POST['entry_ID'];
-$author = $_POST['c_author'];
-$content = $_POST['c_content'];
-$date = $_POST['c_date'];
+$comment_ID = $_POST['comment_ID'];
 
-$query = "DELETE FROM tbl_comments WHERE entry_ID = '$entry_ID' 
-									AND author = '$author' 
-									AND content = '$content' 
-									AND date = '$date'";
+
+$query = "DELETE FROM tbl_comments WHERE comment_ID=$comment_ID";
 									
 mysql_query($query);
 header("Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID);
