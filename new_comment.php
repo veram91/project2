@@ -27,8 +27,9 @@ $form = "
 
 if(!empty($_POST['submit'])){
 	$username = $_SESSION['username'];
-	$content = $_POST['comment'];
-
+	$content=nl2br($_POST['comment']);
+	$content = mysql_escape_string($content);
+	
 	mysql_query("INSERT INTO tbl_comments(entry_ID, author, content, date) 
 				VALUES('$entryid', '$username', '$content', now()) ") or die (mysql_error()); 
 	$redirect = "Location: get_comments.php?blog_ID=".$blognum."&entry_ID=".$entryid;
