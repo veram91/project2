@@ -28,8 +28,7 @@ function createFoot($blog_ID){
 	}
 
 	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].$string.
-		"<a href='index.php'>Return to Blog Index</a></br>
-		Click <a href='logout.php'> here </a> to log out</div>";
+		"Click <a href='logout.php'> here </a> to log out</div>";
 }
 
 function countComments($entry_ID, $con){
@@ -63,7 +62,7 @@ if(!empty($_GET['blog_ID'])){
 	$result=mysqli_query($con,$query);
 	$row=mysqli_fetch_array($result);
 	$title=$row['title'];
-        $username = $row['username'];
+    $username = $row['username'];
 	
 	$query = "SELECT f_name, l_name FROM tbl_users WHERE username = '$username'";
 	$result = mysqli_query($con,$query);
@@ -78,7 +77,9 @@ if(!empty($_GET['blog_ID'])){
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
+					$title=stripslashes($title);
 					$content=$row['content'];
+					$content=stripslashes($content);
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$page.="<div class='entry'>
@@ -122,7 +123,9 @@ if(!empty($_GET['blog_ID'])){
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
+					$title=stripslashes($title);
 					$content=$row['content'];
+					$content=stripslashes($content);
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$entry_ID=$row['entry_ID'];
@@ -161,7 +164,9 @@ if(!empty($_GET['blog_ID'])){
 			if($result){
 				while($row=mysqli_fetch_array($result)){
 					$title=$row['title'];
+					$title=stripslashes($title);
 					$content=$row['content'];
+					$content=stripslashes($content);
 					$mysqldate=strtotime($row['date']);
 					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
 					$entry_ID=$row['entry_ID'];
