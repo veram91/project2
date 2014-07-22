@@ -42,8 +42,10 @@ $page = "";
 	$result = mysql_query($get_entry);
 	while($row = mysql_fetch_array($result)){
 		$blog_title = $row['title'];
+		$blog_title=stripslashes($blog_title);
 		$content = $row['content'];
-		$date = $row['data'];
+		$content=stripcslashes($content);
+		$date = $row['date'];
 		$page.="<div class = 'comments_page'>
 				<div class = 'blog_title'><h2>$blog_title</h2></div>
 				<div class = 'entry_content'>$content</div>
@@ -72,6 +74,7 @@ $page = "";
 			$author = $row['author'];
 			$content = $row['content'];
 			$date = $row['date'];
+			$comment_ID=$row['comment_ID'];
 			
 			//if the author of the blog is viewing the comments, show delete button. Also show delete button for the comments left by logged in user
 			if($blognum===$userblog || $author ===$username){
@@ -82,9 +85,7 @@ $page = "";
 						<form name='delcomment' action='del_comment.php' method='post'>
 							 <input type = 'hidden' name = 'blog_ID' value='$blognum'></input>
 							  <input type='hidden' name='entry_ID' value='$entryid'></input>
-							  <input type='hidden' name='c_author' value='$author'></input>
-							  <input type='hidden' name='c_content' value='$content'></input>
-							  <input type='hidden' name='c_date' value='$date'></input>
+							  <input type='hidden' name='comment_ID' value='$comment_ID'></input>
 							  <input type='submit' value='Delete Comment'></input>
 							  </form>
 						</div>";
@@ -157,3 +158,4 @@ $page = "";
 </div>	
 </body>
 </html>
+
