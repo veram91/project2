@@ -71,7 +71,7 @@ if(!empty($_GET['blog_ID'])){
 	$firstname = $row['f_name'];
 	$lastname = $row['l_name'];
 	
-	$header="<h1 class='logoh1'>$title</h1><h4 class='logoh4'>A BlogNow by: $firstname $lastname</h4><hr>";
+	$header="<h1 class='logoh1'>$title</h1><h4 class='logoh4'>A BlogNow by: $firstname $lastname</h4><hr class='thick'>";
     if(empty($_SESSION['username'])){ //if person looking isnt logged in
 			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
 			$result=mysqli_query($con,$query);
