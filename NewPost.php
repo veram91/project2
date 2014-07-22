@@ -66,9 +66,9 @@ if(!empty($_POST['title'])&&!empty($_POST['content'])){
 	$content=str_replace("<br />", "", $content);
 	$form="
 	<form name='newpost' action='NewPost.php' method='post'>
-	<label>Post Title:</label></br>
+	<label class='posttitle'>Post Title:</label></br>
 	<input type='text' name='title' value='$title'></input></br>
-	<label>Post Content:</label></br>
+	<label class='postcontent'>Post Content:</label></br>
 	<textarea rows='10' cols='70' name='content'>$content</textarea></br>
 	<input type='hidden' name='blog_ID' value='$blog_ID'></input>
 	<input type='submit' name='preview' value='Preview Post'>
@@ -80,9 +80,9 @@ if(!empty($_POST['title'])&&!empty($_POST['content'])){
 
 	$form="
 	<form name='newpost' action='NewPost.php' method='post'>
-	<label>Post Title:</label></br>
+	<label class='posttitle'>Post Title:</label></br>
 	<input type='text' name='title'></input></br>
-	<label>Post Content:</label></br>	
+	<label class='postcontent'>Post Content:</label></br>	
 	<textarea rows='10' cols='70' name='content'></textarea></br>
 	<input type='hidden' name='blog_ID' value='$blog_ID'></input>
 	<input type='submit' name='preview' value='Preview Post'>
