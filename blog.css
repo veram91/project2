@@ -41,6 +41,12 @@ font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verd
 color:#151B54;
 
 }
+
+hr.thick{
+height: 5px;
+background-color:#151B54;
+}
+
 a.bloglink{
 font-style: italic;
 font-weight: bold;
