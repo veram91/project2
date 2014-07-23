@@ -21,6 +21,12 @@ padding:1%;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
+.field_set{
+border-color:#151B54;
+
+
+}
+
 .return{
 position:absolute;
 bottom:10px;
@@ -53,6 +59,11 @@ font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verd
 
 hr.thick{
 height: 5px;
+background-color:#151B54;
+}
+
+hr.thin{
+height: 2px;
 background-color:#151B54;
 }
 
