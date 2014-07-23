@@ -143,7 +143,8 @@ $page = "";
 <body>
 <div>
 <?php echo $header; ?>
-<?php echo $page; ?>	
+<?php echo $page; ?>
+<?php echo $form; ?>
 </div>
 <div class="footer">
 <?php echo $footer; ?>
