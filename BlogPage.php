@@ -148,7 +148,7 @@ if(!empty($_GET['blog_ID'])){
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form></div>
+					  </form><hr class='thin'></div>
 					  ";
 			}else{
 	             $page.="There is no content on this blog."; //blank blog
@@ -157,7 +157,7 @@ if(!empty($_GET['blog_ID'])){
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
-					  </form></div>
+					  </form><hr class='thin'></div>
 					  ";
 			}
 		}else{ //viewing someone elses blog
