@@ -89,7 +89,7 @@ $page = "";
 							  <input type='hidden' name='comment_ID' value='$comment_ID'></input>
 							  <input type='submit' value='Delete Comment'></input>
 							  </form>
-						</div>";
+						<hr class='thin'></div>";
 			
 			}
 			else{
@@ -97,7 +97,7 @@ $page = "";
 							<div class = 'comment_author'><h4>".$author." said...</h4></div>
 							<div class = 'comment_content'>".$content."</div>
 							<div class = 'comment_time'>".$date."</div>
-							</div>";
+							<hr class='thin'></div>";
 					
 				
 			}
@@ -115,7 +115,7 @@ $page = "";
 					  <input type='hidden' name='entry_ID' value='$entryid'></input>
 					  <input type='hidden' name='blog_ID' value='$blognum'></input>
 					  <input type='submit' value='Post Comment'></input>
-					  </form></div><hr class='thin'>
+					  </form><hr class='thin'></div>
 					  ";
 	}
 	$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
@@ -123,11 +123,11 @@ $page = "";
 								  <input type='hidden' name='entry_ID' value='$entryid'></input>
 								  <input type='hidden' name='blog_ID' value='$blognum'></input>
 								  <input type='submit' value='Post Comment'></input>
-								  </form></div>
+								  </form><hr class='thin'></div>
 								  ";
 	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
-		<a href='index.php'> Return to Blog Index</a><br/>
+		<a href='index.php'> Return to BlogNow Index</a><br/>
 		<a href='logout.php'> Logout</a>";
 		
 
