@@ -76,7 +76,7 @@ function printBlogs(){
 if(!empty($_SESSION['username'])){	
 	
 	//if yes post list of blogs and a footer of "welcome" and "logout"
-	$footer="<div class='loggedin'> you logged in as ".$_SESSION['username']."  Click <a href='logout.php'> here </a> to log out</div>";
+	$footer="<div class='loggedin'> You logged in as ".$_SESSION['username'].".  Click <a href='logout.php'> here </a> to log out.</div>";
 	$content=printBlogs();
 	
 }else{ //if no, post list of blogs and a footer of log-in
