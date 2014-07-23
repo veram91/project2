@@ -86,7 +86,7 @@
 	<form id='register' action='register.php' method='post'
 	    accept-charset='UTF-8' onsubmit="return validateFormr()">
 	<fieldset >
-	<legend><h3>Registration Form</h3></legend>
+	<legend><h3 class="logoh1">Registration Form</h3></legend>
 	<div class="formcontent">
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	<label for='fname' >First Name*: </label>
@@ -105,6 +105,6 @@
 	</div>
 	</fieldset>
 	</form>
-	<a href="index.php"> Return to BlogNow Index </a>
+	<a class="logoh4" href="index.php"> Return to BlogNow Index </a>
 </body>
 </html>
