@@ -27,8 +27,8 @@ function createFoot($blog_ID){
 		$string="<a href='index.php'>Return to Blog Index</a></br>";
 	}
 
-	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].$string.
-		"Click <a href='logout.php'> here </a> to log out.</div>";
+	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].
+		"<br>Click <a href='logout.php'> here </a> to log out.</div>";
 }
 
 function countComments($entry_ID, $con){
