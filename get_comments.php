@@ -35,7 +35,7 @@ $page = "";
 	$result=mysql_query($query);
 	$row=mysql_fetch_array($result);
 	$title=$row['title'];
-	$header="<h1>$title</h1>";
+	$header="<h1 class='logoh1'>$title</h1>";
 	
 	$entryid = $_GET['entry_ID'];
 	$get_entry = "SELECT * FROM tbl_entries WHERE entry_ID = '$entryid'";
