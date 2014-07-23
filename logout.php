@@ -5,7 +5,7 @@ $_SESSION = array();
 if(isset($_COOKIE['username'])){
 	setcookie('username', '', 0);
 }
- $string="<br> you are logged out successfully!<br/><a href='index.php'>Return to the Index Page</a>";
+ $string="<br><h3 class='logoh1'>You are logged out of BlogNow successfully! have a great day.</h3><br/><a href='index.php'>Return to the Index Page</a>";
 ?>
 
 <html>
