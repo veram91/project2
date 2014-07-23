@@ -28,7 +28,7 @@ function createFoot($blog_ID){
 	}
 
 	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].$string.
-		"Click <a href='logout.php'> here </a> to log out</div>";
+		"Click <a href='logout.php'> here </a> to log out.</div>";
 }
 
 function countComments($entry_ID, $con){
@@ -38,12 +38,12 @@ function countComments($entry_ID, $con){
 					$numCom=$total['total'];
 					if(!empty($total['total'])){
 					    if($numCom==1){
-							$commentString="View $numCom comment";
+							$commentString="View $numCom comment.";
 						}else{
-							$commentString="View $numCom comments";
+							$commentString="View $numCom comments.";
 						}
 					}else{
-						   $commentString="Click to add a comment";
+						   $commentString="Click to add a comment.";
 					}
 					return $commentString;
 }
@@ -85,7 +85,7 @@ if(!empty($_GET['blog_ID'])){
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
-						<div class='etime'>$date</div><div class='ecomments'> log in to view comments </div>
+						<div class='etime'>$date</div><div class='ecomments'> Log in to view comments. </div>
 						</div>";
 				}
 				$footer='<!--Login Form-->
@@ -127,7 +127,7 @@ if(!empty($_GET['blog_ID'])){
 					$content=$row['content'];
 					$content=stripslashes($content);
 					$mysqldate=strtotime($row['date']);
-					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
+					$date="Posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate).".";
 					$entry_ID=$row['entry_ID'];
 					$commentString=countComments($entry_ID, $con);
 					$page.="<div class='entry'>
@@ -149,7 +149,7 @@ if(!empty($_GET['blog_ID'])){
 					  </form></div>
 					  ";
 			}else{
-	             $page.="There is no content on this blog"; //blank blog
+	             $page.="There is no content on this blog."; //blank blog
 
 		 		createFoot($blognum);
 				$footer.="<form name='newpost' action='NewPost.php' method='post'>
@@ -187,7 +187,7 @@ if(!empty($_GET['blog_ID'])){
 				$blog_ID=$row[0];
 				createFoot($blog_ID);
 			}else{
-				$page.="There is no content on this blog"; //blank blog
+				$page.="There is no content on this blog."; //blank blog
 				createFoot($blog_ID);
 			}
 		}
