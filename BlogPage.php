@@ -82,7 +82,7 @@ if(!empty($_GET['blog_ID'])){
 					$content=$row['content'];
 					$content=stripslashes($content);
 					$mysqldate=strtotime($row['date']);
-					$date="posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate);
+					$date="Posted on ".date("m/d/y",$mysqldate)." at ".date("g:i a",$mysqldate).".";
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
