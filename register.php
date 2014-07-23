@@ -105,6 +105,6 @@
 	</div>
 	</fieldset>
 	</form>
-	<a href="index.php"> Return to Index </a>
+	<a href="index.php"> Return to BlogNow Index </a>
 </body>
 </html>
