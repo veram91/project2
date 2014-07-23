@@ -46,15 +46,13 @@ font-size: 16px;
 
 }
 input.title{
-font-size: 20px;
-font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+font-size: 18px;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 font-weight: bold;
 }
 textarea.content{
 font-size: 16px;
-font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-
-
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 hr.thick{
