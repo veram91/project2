@@ -21,10 +21,15 @@ padding:1%;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
+.curly{
+list-style-image: url(curly4.jpg);
+border: solid #151B54 1px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
 .field_set{
 border-color:#151B54;
-
-
 }
 
 .return{
