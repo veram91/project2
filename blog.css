@@ -21,15 +21,10 @@ padding:1%;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
-.curly{
-list-style-image: url(curly4.jpg);
-border: solid #151B54 1px;
-padding-top: 10px;
-padding-bottom: 10px;
-}
-
 .field_set{
 border-color:#151B54;
+
+
 }
 
 .return{
@@ -84,18 +79,21 @@ font-size: 16px;
 font-style: italic;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
-
+.curly{
+list-style-image: url(curly4.jpg);
+padding-top: 10px;
+padding-bottom: 10px;
+}
 .footer{
 position:relative;
 bottom:5px;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
-
 .loggedin{
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 text-align: center;
-}
 
+}
 .space{
 margin-left:2em;
 float:left;
@@ -123,21 +121,47 @@ border: 1 px solid black;
 
 .etitle{
 text-align: center;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .etext{
 padding: 5px;
-font-size: 14px;
+font-size: 18px;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .etime{
 width: 45%;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+}
+.entry_content{
+padding: 5px;
+font-size: 18px;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+
 }
 
 .ecomments{
 width: 45%
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+}
+.comment_author{
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+font-style:italic;
+
 }
 
+.comment_content{
+
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+font-style:italic;
+font-size: 14px;
+
+}
+
+.display_comments{
+
+}
 
 .center{
     margin: auto;
