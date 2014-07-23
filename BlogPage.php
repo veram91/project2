@@ -24,11 +24,12 @@ function createFoot($blog_ID){
 	if ($blog_ID>0){
 	$string="Click <a href='BlogPage.php?blog_ID=".$blog_ID."'> here </a> to go to your blog";
 	}else{
-		$string="<a href='index.php'>Return to Blog Index</a></br>";
+		$string="<a href='index.php'>Return to BlogNow Index</a></br>";
 	}
 
 	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].
-		"<br>Click <a href='logout.php'> here </a> to log out.</div>";
+	         "<br> <a href='index.php'>Return to BlogNow Index</a>
+		  <br>Click <a href='logout.php'> here </a> to log out.</div>";
 }
 
 function countComments($entry_ID, $con){
@@ -101,7 +102,7 @@ if(!empty($_GET['blog_ID'])){
 				<input type="submit" value="Submit">
 				<input type = "reset" value = "Reset">
 				<a href="register.php"> Create New Account </a></br><?php echo $error ?>
-				<a href="index.php">Return to Blog Index</a></br>
+				<a href="index.php">Return to BlogNow Index</a></br>
 				</fieldset>	
 				</form> ';
 
