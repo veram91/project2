@@ -61,11 +61,11 @@ function printBlogs(){
 		$blogauthor=$row['username'];
 		$link="BlogPage.php?blog_ID=".$blog_ID;
 		$update=lastPost($blog_ID);
-		$content.="<li><div class='bloglink'>
-		           <a href='$link'>$blogtitle</a></br>
+		$content.="<li><div>
+		           <a class='bloglink' href='$link'>$blogtitle</a></br>
 			    <div class='owner'>A blog by  $blogauthor</div>
 				<div class='updated'>$update</div>
-			   </div></li><hr>";
+			   </div></li><hr class='thin'>";
         }
     }
 	$content.="</ul>";
@@ -109,7 +109,9 @@ if(!empty($_SESSION['username'])){
 <div id="header">
 <h1 class="logoh1">BlogNow...</h1><h4 class="logoh4">Who will YOU influence today? Make a difference NOW.</h4>
 </div>
+<div>
 <?php echo $content ?>
+</div>
 <div class="footer">
 <?php echo $footer ?>
 </div>
