@@ -17,6 +17,7 @@ $page="";
 $footer="";
 $header="";
 $userblog="";
+date_default_timezone_set("America/New_York");
 
 function createFoot($blog_ID){
 
