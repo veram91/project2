@@ -47,11 +47,12 @@ $page = "";
 		$content=stripcslashes($content);
 		$date = $row['date'];
 		$page.="<div class = 'comments_page'>
-				<div class = 'blog_title'><h2>$blog_title</h2></div>
+				<div class = 'blog_title'><h1 class='logoh1'>$blog_title</h1></div>
 				<div class = 'entry_content'>$content</div>
 				<div class = 'entry_time'>$date</div>
 				</div>
-				<h1>Comments</h1>";
+				<hr class='thick'>
+				<h3 class='logoh1'>Comments</h3>";
 	
 	}
 	
@@ -79,7 +80,7 @@ $page = "";
 			//if the author of the blog is viewing the comments, show delete button. Also show delete button for the comments left by logged in user
 			if($blognum===$userblog || $author ===$username){
 				$page.="<div class = 'display_comments'>
-						<div class = 'comment_author'><h2>".$author." said...</h2></div>
+						<div class = 'comment_author'><h4>".$author." said...</h4></div>
 						<div class = 'comment_content'>".$content."</div>
 						<div class = 'comment_time'>".$date."</div>
 						<form name='delcomment' action='del_comment.php' method='post'>
@@ -93,7 +94,7 @@ $page = "";
 			}
 			else{
 					$page.="<div class = 'display_comments'>
-							<div class = 'comment_author'><h2>".$author." said...</h2></div>
+							<div class = 'comment_author'><h4>".$author." said...</h4></div>
 							<div class = 'comment_content'>".$content."</div>
 							<div class = 'comment_time'>".$date."</div>
 							</div>";
@@ -114,7 +115,7 @@ $page = "";
 					  <input type='hidden' name='entry_ID' value='$entryid'></input>
 					  <input type='hidden' name='blog_ID' value='$blognum'></input>
 					  <input type='submit' value='Post Comment'></input>
-					  </form></div>
+					  </form></div><hr class='thin'>
 					  ";
 	}
 	$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
@@ -124,7 +125,7 @@ $page = "";
 								  <input type='submit' value='Post Comment'></input>
 								  </form></div>
 								  ";
-	$footer="<div class='loggedin'>you logged in as ".$_SESSION['username']." <br/>
+	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
 		<a href='index.php'> Return to Blog Index</a><br/>
 		<a href='logout.php'> Logout</a>";
