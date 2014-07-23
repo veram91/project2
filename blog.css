@@ -70,17 +70,18 @@ background-color:#151B54;
 a.bloglink{
 font-style: italic;
 font-weight: bold;
-font-size: 22px;
+font-size: 20px;
 }
 
 .owner{
 font-weight: bold;
-font-size: 18px;
+font-size: 16px;
+font-style: italic;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .footer{
-position:absolute;
+position:relative;
 bottom:5px;
 font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
