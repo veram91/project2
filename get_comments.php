@@ -110,21 +110,18 @@ $page = "";
 
 	else{
 		$page.= "There are no comments on this entry";
-		$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
-					  <input type='hidden' name='blog_ID' value='$blognum'></input>
-					  <input type='hidden' name='entry_ID' value='$entryid'></input>
-					  <input type='hidden' name='blog_ID' value='$blognum'></input>
-					  <input type='submit' value='Post Comment'></input>
-					  </form><hr class='thin'></div>
-					  ";
+		
 	}
-	$page.=		"<form name='newcomment' action='new_comment.php' method='post'>
-								  <input type='hidden' name='blog_ID' value='$blognum'></input>
-								  <input type='hidden' name='entry_ID' value='$entryid'></input>
-								  <input type='hidden' name='blog_ID' value='$blognum'></input>
-								  <input type='submit' value='Post Comment'></input>
-								  </form><hr class='thin'></div>
-								  ";
+	$form = "
+<form name = 'add_comment' action = 'new_comment.php' method='post'>
+<label for='comment'>Enter your comment:</label><br/>
+<textarea rows = '7' cols = '50' name = 'comment' required></textarea><br/>
+<input type = 'hidden' name = 'blog_ID' value='$blognum'></input>
+<input type = 'hidden' name = 'entry_ID' value='$entryid'></input>
+<input type = 'submit' name = 'submit' value = 'Post New Comment'>
+<input type = 'reset' name = 'reset' value='Clear'>
+</form>";
+
 	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username']." <br/>
 		Click <a href='BlogPage.php?blog_ID=".$blognum."'> here </a> to go to your blog <br/>
 		<a href='index.php'> Return to BlogNow Index</a><br/>
