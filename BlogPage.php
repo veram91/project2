@@ -27,7 +27,7 @@ function createFoot($blog_ID){
 		$string="<a href='index.php'>Return to BlogNow Index</a></br>";
 	}
 
-	$footer="<div class='loggedin'>You logged in as ".$_SESSION['username'].
+	$footer.="<div class='loggedin'>You logged in as ".$_SESSION['username'].
 	         "<br> <a href='index.php'>Return to BlogNow Index</a>
 		  <br>Click <a href='logout.php'> here </a> to log out.</div>";
 }
@@ -144,21 +144,22 @@ if(!empty($_GET['blog_ID'])){
 						<hr class='thin'>
 						</div>";
 				}
+				$header.="<form name='newpost' action='NewPost.php' method='post'>
+					  <input type='hidden' name='blog_ID' value='$userblog'></input>
+					  <input type='submit' value='New Post'></input>
+					  </form><hr class='thin'></div>
+					  ";
 		 		createFoot(0);
-				$footer.="<form name='newpost' action='NewPost.php' method='post'>
-					  <input type='hidden' name='blog_ID' value='$userblog'></input>
-					  <input type='submit' value='New Post'></input>
-					  </form><hr class='thin'></div>
-					  ";
-			}else{
-	             $page.="There is no content on this blog."; //blank blog
 
-		 		createFoot($blognum);
-				$footer.="<form name='newpost' action='NewPost.php' method='post'>
+			}else{
+	                   $page.="There is no content on this blog."; //blank blog
+				$header.="<form name='newpost' action='NewPost.php' method='post'>
 					  <input type='hidden' name='blog_ID' value='$userblog'></input>
 					  <input type='submit' value='New Post'></input>
 					  </form><hr class='thin'></div>
 					  ";
+		 		createFoot($blognum);
+
 			}
 		}else{ //viewing someone elses blog
 			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
