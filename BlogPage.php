@@ -73,7 +73,7 @@ if(!empty($_GET['blog_ID'])){
 	
 	$header="<h1 class='logoh1'>$title</h1><h4 class='logoh4'>A BlogNow by: $firstname $lastname</h4><hr class='thick'>";
     if(empty($_SESSION['username'])){ //if person looking isnt logged in
-			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date DESC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
@@ -119,7 +119,7 @@ if(!empty($_GET['blog_ID'])){
 		$userblog=$row['blog_ID'];
 		}
 		if($blognum===$userblog){ //if this is the users blog
-			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date DESC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
@@ -162,7 +162,7 @@ if(!empty($_GET['blog_ID'])){
 
 			}
 		}else{ //viewing someone elses blog
-			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date ASC";
+			$query="SELECT * FROM tbl_entries WHERE blog_ID='$blognum' ORDER BY date DESC";
 			$result=mysqli_query($con,$query);
 			if($result){
 				while($row=mysqli_fetch_array($result)){
