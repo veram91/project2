@@ -178,7 +178,7 @@ if(!empty($_GET['blog_ID'])){
 					$page.="<div class='entry'>
 						<div class='etitle'><h2>$title</h2></div>
 						<div class='etext'>$content</div></br>
-						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>$commentString</a> </div>
+						<div class='etime'>$date</div><div class='ecomments'><a href='get_comments.php?blog_ID=".$blognum."&entry_ID=".$entry_ID."'>$commentString</a> </div><hr class='thin'>
 						</div>";
 				}
 				$username=$_SESSION['username'];
