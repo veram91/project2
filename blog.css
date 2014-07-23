@@ -18,34 +18,36 @@ font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 
 .formcontent{
 padding:1%;
-}
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+
 
 .return{
 position:absolute;
 bottom:10px;
 text-align: center;
-
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 label.posttitle{
 font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 font-size: 16px;
+
 }
 
 label.postcontent{
 font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 font-size: 16px;
+
 }
 input.title{
 font-size: 20px;
 font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 font-weight: bold;
-color:#151B54;
 }
 textarea.content{
 font-size: 16px;
 font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-color:#151B54;
+
 
 }
 
@@ -63,11 +65,13 @@ font-size: 22px;
 .owner{
 font-weight: bold;
 font-size: 18px;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .footer{
 position:absolute;
 bottom:5px;
+font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .space{
