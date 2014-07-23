@@ -53,7 +53,7 @@ function lastPost($blog_ID){
 function printBlogs(){
 	mysql_select_db("blog_db");
 	$result = mysql_query("SELECT * FROM tbl_blogs");
-    	$content="<ul>";
+    	$content="<ul class='curly'>";
 	if ($result) {
 	 while ($row = mysql_fetch_array($result)) {
 		$blog_ID=$row['blog_ID'];
