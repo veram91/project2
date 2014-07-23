@@ -13,6 +13,6 @@ if(isset($_COOKIE['username'])){
 <link rel="stylesheet" type="text/css" href="blog.css">
 </head>
 <body>
-<? echo $string ?>
+<?php echo $string ?>
 </body>
 </html>
