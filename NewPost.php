@@ -113,6 +113,7 @@ if(!empty($_POST['rewrite'])||!empty($_POST['preview'])){
 
 <html>
 <head>
+<title>BlogNow New Post</title>
 <link rel="stylesheet" type="text/css" href="blog.css"></link>
 </head>
 <body>
