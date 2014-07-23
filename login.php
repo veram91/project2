@@ -17,7 +17,7 @@
 	<form id="login_form" method="post" action="login.php">
 	<fieldset>
 		<legend><h3>Login Form: Enter your username and password</Legend>
-		<div class="formcontent"
+		<div class="formcontent">
 		<label for="username">Username</label>
 		<input type="text" name="username" size="8">
 		<label for="pass">Password</label>
